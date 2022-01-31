@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace pastabilities-client build",
+    "dev": "yarn workspace pastabilities-server dev",
+    "dev:debug": "yarn workspace pastabilities-server dev:debug",
+    "heroku-postbuild": "yarn workspace pastabilities-client build",
+    "start": "yarn workspace pastabilities-server start",
+    "dev:cypress": "yarn workspace pastabilities-server dev:e2e",
+    "e2e:open": "yarn workspace pastabilities-e2e e2e:open",
+    "e2e:run": "yarn workspace pastabilities-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.15"
+  }
+}

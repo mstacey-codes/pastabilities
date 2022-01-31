@@ -1,0 +1,41 @@
+{
+  "scripts": {
+    "start": "node src/app.js",
+    "clean": "rm -rf ./public/dist",
+    "dev": "yarn run clean && nodemon src/app.js",
+    "dev:debug": "nodemon --inspect-brk src/app.js",
+    "console": "node --experimental-repl-await ./src/console.js",
+    "migrate:latest": "knex --knexfile ./knexfile.cjs migrate:latest",
+    "migrate:rollback": "knex --knexfile ./knexfile.cjs migrate:rollback",
+    "migrate:make": "knex --knexfile ./knexfile.cjs migrate:make",
+    "db:seed": "node ./bin/seed.js",
+    "db:test:migrate": "NODE_ENV='test' yarn run migrate:latest",
+    "db:e2e:migrate": "NODE_ENV='e2e' yarn run migrate:latest",
+    "test": "jest",
+    "ci": "jest --coverage",
+    "generate-secret": "./scripts/generate-secret.js",
+    "dev:e2e": "NODE_ENV=e2e PORT=8765 nodemon src/app.js"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "name": "pastabilities-server",
+  "engines": {
+    "node": "^14.15"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-session": "^2.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^5.2.0",
+    "knex": "^1.0.1",
+    "morgan": "^1.10.0",
+    "objection": "^3.0.1",
+    "objection-unique": "^1.2.2",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "pg": "^8.7.1"
+  }
+}
