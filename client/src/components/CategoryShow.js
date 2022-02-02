@@ -40,9 +40,9 @@ const CategoryShow = (props) => {
   return (
     <>
       <div>
-        <h1>{category.name} Pastas:</h1>
+        <h1 className="call-to-action">{category.name} Pastas:</h1>
       </div>
-      <div>{pastasList}</div>
+      <div className="column-grid">{pastasList}</div>
     </>
   );
 };
