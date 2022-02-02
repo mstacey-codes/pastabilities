@@ -30,6 +30,7 @@ const CategoriesList = (props) => {
       </li>
     );
   });
+
   return (
     <div>
       <h3>Click on a Pasta Type to learn more!</h3>

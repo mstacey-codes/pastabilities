@@ -4,7 +4,7 @@ import PastaTile from "./PastaTile.js";
 const CategoryShow = (props) => {
   const [category, setCategory] = useState({
     name: "",
-    pastas: [null],
+    pastas: [],
   });
 
   const categoryId = props.match.params.id;
@@ -30,7 +30,7 @@ const CategoryShow = (props) => {
 
   let pastasList;
   if (!category.pastas[0]) {
-    pastasList = `Nothing has been added yet. Wouldn't it be great if there was a form that let you add pastas? Guess that's for another user story.`;
+    pastasList = `There are currently no pastas added to this category`;
   } else {
     pastasList = category.pastas.map((pasta) => {
       return <PastaTile key={pasta.id} {...pasta} />;
@@ -40,11 +40,9 @@ const CategoryShow = (props) => {
   return (
     <>
       <div>
-        <h1>Hello from category show page {category.name}</h1>
+        <h1>{category.name} Pastas:</h1>
       </div>
-      <div>
-        <ul>{pastasList}</ul>
-      </div>
+      <div>{pastasList}</div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Pasta } from "../../models/index.js";
+import { Pasta, Category } from "../../models/index.js";
 
 class PastaSeeder {
   static async seed() {
@@ -6,27 +6,27 @@ class PastaSeeder {
       {
         name: "spaghetti",
         description: "Long Noodle good for chicken parm!",
-        categoryId: 2,
+        categoryId: (await Category.query().findOne({ name: "Long" })).id,
       },
       {
         name: "cavatappi",
         description: "Spiral Pasta!",
-        categoryId: 1,
+        categoryId: (await Category.query().findOne({ name: "Short" })).id,
       },
       {
         name: "elbow",
         description: "It Looks Like an Elbow!!",
-        categoryId: 1,
+        categoryId: (await Category.query().findOne({ name: "Short" })).id,
       },
       {
         name: "capelli de chef",
         description: "Is this a chefs hat?!",
-        categoryId: 6,
+        categoryId: (await Category.query().findOne({ name: "Fun" })).id,
       },
       {
         name: "farfalle",
         description: "Bowties are stylish, and so are butterflies.",
-        categoryId: 6,
+        categoryId: (await Category.query().findOne({ name: "Fun" })).id,
       },
     ];
     for (const singlePastaData of pastasData) {
