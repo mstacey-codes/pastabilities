@@ -4,6 +4,7 @@ const PastaShow = (props) => {
     const [pasta, setPasta] = useState({
         name: '',
         description: '',
+        category: {}
     })
 
     const pastaId = props.match.params.id
@@ -33,6 +34,7 @@ const PastaShow = (props) => {
             <div>
                 <h1>{pasta.name}</h1>
                 <p>{pasta.description}</p>
+                <p>Category: {pasta.category.name}</p>
             </div>
         </>
     )
