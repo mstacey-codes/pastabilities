@@ -24,21 +24,6 @@
   "engines": {
     "node": "^14.15"
   },
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "cookie-session": "^1.4.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "knex": "^0.21.16",
-    "morgan": "^1.10.0",
-    "objection": "^2.2.11",
-    "objection-unique": "^1.2.1",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "pg": "^8.5.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -60,5 +45,20 @@
     "webpack": "^5.3.2",
     "webpack-dev-middleware": "^4.0.0",
     "webpack-hot-middleware": "^2.25.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "knex": "^0.21.16",
+    "morgan": "^1.10.0",
+    "objection": "^2.2.11",
+    "objection-unique": "^1.2.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.1"
   }
 }
