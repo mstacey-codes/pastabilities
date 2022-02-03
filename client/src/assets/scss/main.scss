@@ -1,9 +1,6 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-<<<<<<< HEAD
-// place global css here
-=======
 
 body {
   background-image: url("https://imgprd19.hobbylobby.com/5/f0/f6/5f0f62f75a71d735e53bb754bfe74d196cd1b454/350Wx350H-1728476-1118.jpg");
@@ -133,7 +130,6 @@ a:active {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
->>>>>>> f65e40bcdd032b9b40046f1a61540fc33833e0ac
 *,
 *::before,
 *::after {
