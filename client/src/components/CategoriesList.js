@@ -36,7 +36,9 @@ const CategoriesList = (props) => {
       <div className="call-to-action">
         <h3>Click on a Pasta Type to learn more!</h3>
       </div>
-      <div className="column-grid">{categoriesListItems}</div>
+      <div className="list-container">
+        <div className="column-grid">{categoriesListItems}</div>
+      </div>
     </>
   );
 };
