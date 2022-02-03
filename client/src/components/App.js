@@ -13,6 +13,7 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import PastaShow from "./PastaShow";
+import PastasList from "./PastasList"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -25,6 +26,7 @@ const App = (props) => {
       setCurrentUser(null);
     }
   };
+  
 
   useEffect(() => {
     fetchCurrentUser();
@@ -42,6 +44,7 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
         
+        <Route exact path='/pastas' component={PastasList} />
         <Route exact path='/pastas/:id' component={PastaShow} />
       </Switch>
     </Router>
