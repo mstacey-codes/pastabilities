@@ -7,8 +7,6 @@ class PastasSerializer {
       serializedPasta[attribute] = pasta[attribute];
     }
     
-   // serializedPasta.category = await pasta.$relatedQuery('category')
-    
     return serializedPasta;
   }
 }

@@ -30,7 +30,7 @@ const PastaShow = (props) => {
     }, [])
     return (
         <>
-            <div className="pasta-info-div">
+            <div className="pasta-info">
                 <h1 className='pasta-title'>{pasta.name}</h1>
                 <p className="pasta-desc">{pasta.description}</p>
                 <p className="pasta-category">Category: {pasta.category.name}</p>

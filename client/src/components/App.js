@@ -14,7 +14,7 @@ import TopBar from "./layout/TopBar";
 import PastaShow from "./PastaShow";
 
 const App = (props) => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(null);
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser();
