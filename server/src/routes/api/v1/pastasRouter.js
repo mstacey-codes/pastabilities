@@ -24,6 +24,7 @@ pastasRouter.get('/:id', async (req, res) => {
     try {
         const pasta = await Pasta.query().findById(pastaIndex)
         const serializedPasta = PastasSerializer.getDetails(pasta)
+        serializedPasta.category = await pasta.$relatedQuery('category')
         return res.status(200).json({ pasta: serializedPasta })
     } catch (error) {
         return res.status(500).json({ errors: error })

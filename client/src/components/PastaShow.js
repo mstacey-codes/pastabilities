@@ -28,13 +28,12 @@ const PastaShow = (props) => {
     useEffect(() => {
         getPasta()
     }, [])
-
     return (
         <>
-            <div>
-                <h1>{pasta.name}</h1>
-                <p>{pasta.description}</p>
-                <p>Category: {pasta.category.name}</p>
+            <div className="pasta-info-div">
+                <h1 className='pasta-title'>{pasta.name}</h1>
+                <p className="pasta-desc">{pasta.description}</p>
+                <p className="pasta-category">Category: {pasta.category.name}</p>
             </div>
         </>
     )
