@@ -12,10 +12,11 @@ import CategoryShow from "./CategoryShow";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
+import PastaShow from "./PastaShow";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
-  
+
   const fetchCurrentUser = async () => {
     try {
       const user = await getCurrentUser();
@@ -40,6 +41,8 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
+        
+        <Route exact path='/pastas/:id' component={PastaShow} />
       </Switch>
     </Router>
   );
