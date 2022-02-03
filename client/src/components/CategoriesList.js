@@ -25,17 +25,21 @@ const CategoriesList = (props) => {
 
   const categoriesListItems = categories.map((category) => {
     return (
-      <li key={category.id}>
+      <div className="category-tile" key={category.id}>
         <Link to={`/categories/${category.id}`}>{category.name}</Link>
-      </li>
+      </div>
     );
   });
 
   return (
-    <div>
-      <h3>Click on a Pasta Type to learn more!</h3>
-      <ul>{categoriesListItems}</ul>
-    </div>
+    <>
+      <div className="call-to-action">
+        <h3>Click on a Pasta Type to learn more!</h3>
+      </div>
+      <div className="list-container">
+        <div className="column-grid">{categoriesListItems}</div>
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,135 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-// place global css here
+
+body {
+  background-image: url("https://imgprd19.hobbylobby.com/5/f0/f6/5f0f62f75a71d735e53bb754bfe74d196cd1b454/350Wx350H-1728476-1118.jpg");
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h3 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+a:link,
+a:visited {
+  color: #c92c20;
+}
+
+a:hover,
+a:active {
+  color: #923641;
+}
+
+.homepage.header {
+  width: 100%;
+  text-align: center;
+  background-color: #fcd32c;
+  color: #c92c20;
+}
+
+.homepage.tag-line {
+  text-align: center;
+  background-color: #ffffff;
+  width: 70%;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+}
+
+.call-to-action {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 50%;
+  background-color: #c92c20;
+  text-align: center;
+  color: #fcd32c;
+  border-radius: 10px;
+}
+
+.list-container {
+  border-style: solid;
+  border-radius: 10px;
+  background-color: #ffffff99;
+  padding-bottom: 5%;
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.column-grid {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  padding-top: 5%;
+  row-gap: 25px;
+}
+
+.category-tile {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  background-color: #ffffff;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+}
+
+.category-title {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 50%;
+  background-color: #c92c20;
+  text-align: center;
+  color: #fcd32c;
+  border-radius: 10px;
+}
+
+.pasta-tile {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffffff;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+}
+
+.pasta-info {
+  border-style: solid;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding-bottom: 5%;
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.pasta-title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.pasta-desc {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.pasta-category {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 *,
 *::before,
 *::after {
