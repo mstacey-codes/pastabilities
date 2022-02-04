@@ -3,6 +3,7 @@ import PastaTile from "./PastaTile.js";
 import NewPastaForm from "./NewPastaForm.js";
 import ErrorList from './ErrorList'
 import translateServerErrors from '../services/translateServerErrors'
+import getCurrentUser from "../services/getCurrentUser.js";
 
 const CategoryShow = (props) => {
   const [category, setCategory] = useState({
@@ -11,8 +12,23 @@ const CategoryShow = (props) => {
   });
   const [errors, setErrors] = useState([])
   
-  const categoryId = props.match.params.id;
+  const [currentUser, setCurrentUser] = useState(undefined);
+  
+  const fetchCurrentUser = async () => {
+    try {
+      const user = await getCurrentUser();
+      setCurrentUser(user);
+    } catch (err) {
+      setCurrentUser(null);
+    }
+  };
 
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
+
+  const categoryId = props.match.params.id;
+  
   const getCategory = async () => {
     try {
       const response = await fetch(`/api/v1/categories/${categoryId}`);
@@ -71,7 +87,19 @@ const CategoryShow = (props) => {
       return <PastaTile key={pastaObject.id} {...pastaObject} />;
     });
   }
-  
+  const showForm = () => {
+    if (currentUser) {
+      return (<>
+        <ErrorList errors={errors} />
+        <NewPastaForm 
+          postPasta={postPasta}
+        />
+        </>)
+    } else {
+      return <h3>You must be logged in to submit a pasta!</h3>
+    }
+  }
+
   return (
     <>
       <div>
@@ -81,10 +109,7 @@ const CategoryShow = (props) => {
         <div className="column-grid">{pastasList}</div>
       </div>
       <div>
-        <ErrorList errors={errors} />
-        <NewPastaForm 
-          postPasta={postPasta}
-        />
+        {showForm()}
       </div>
     </>
   );

@@ -11,7 +11,7 @@ categoriesPastasRouter.post("/", async (req, res) => {
   const formInput = cleanUserInput(body)
   const { name, description } = formInput
   const { categoryId } = req.params 
-  console.log(name, description, categoryId)
+  
   try {
     const newPasta = await Pasta.query().insertAndFetch({ name, description, categoryId })
     return res.status(200).json({ pasta: newPasta })
