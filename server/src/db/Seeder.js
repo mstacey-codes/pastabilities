@@ -2,6 +2,7 @@
 import { connection } from "../boot.js";
 import CategorySeeder from "./seeders/CategorySeeder.js";
 import PastaSeeder from "./seeders/PastaSeeder.js";
+import ReviewSeeder from "./seeders/ReviewSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -10,6 +11,8 @@ class Seeder {
     await CategorySeeder.seed();
     console.log("seeding pastas");
     await PastaSeeder.seed();
+    console.log("seeding reviews");
+    await ReviewSeeder.seed();
     console.log("Done!");
     await connection.destroy();
   }

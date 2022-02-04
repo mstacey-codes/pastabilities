@@ -13,6 +13,7 @@ exports.up = async (knex) => {
             .index()
             .unsigned()
             .references('pastas.id')
+        table.string('title').notNullable()
         table.integer('rating').notNullable()
         table.string('review')
         table.string('recipe')

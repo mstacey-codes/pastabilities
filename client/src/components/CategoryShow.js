@@ -33,7 +33,8 @@ const CategoryShow = (props) => {
     pastasList = `There are currently no pastas added to this category`;
   } else {
     pastasList = category.pastas.map((pasta) => {
-      return <PastaTile key={pasta.id} {...pasta} />;
+      return <PastaTile 
+      key={pasta.id} {...pasta} />;
     });
   }
 
