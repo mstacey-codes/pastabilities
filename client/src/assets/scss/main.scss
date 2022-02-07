@@ -3,7 +3,8 @@
 @include foundation-everything;
 
 body {
-  background-image: url("https://imgprd19.hobbylobby.com/5/f0/f6/5f0f62f75a71d735e53bb754bfe74d196cd1b454/350Wx350H-1728476-1118.jpg");
+  background-image: url("https://e7.pngegg.com/pngimages/243/115/png-clipart-check-textile-woven-fabric-tartan-gingham-checkered-border-s-angle-rectangle.png");
+  background-size: 750px;
 }
 
 h1 {
@@ -111,21 +112,102 @@ a:active {
   border-style: solid;
   border-radius: 10px;
   background-color: #ffffff;
-  padding-bottom: 5%;
+  padding-bottom: 1%;
   margin-top: 2%;
   margin-left: 10%;
   margin-right: 10%;
 }
 .pasta-title {
   font-family: Georgia, "Times New Roman", Times, serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  width: 50%;
+  background-color: #c92c20;
+  text-align: center;
+  color: #fcd32c;
+  border-radius: 10px;
 }
 
 .pasta-desc {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16pt;
+  padding-top: 3%;
+  padding-left: 3%;
 }
 
 .pasta-category {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 3%;
+}
+
+.profile-page {
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffffff;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+  border-radius: 10px;
+}
+
+.user-tag {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.user-email {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.sign-in-form {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffffff;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+  border-radius: 10px;
+}
+
+.register-form {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ffffff;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #fcd32c;
+  border-radius: 10px;
+}
+
+.email-input {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align: left;
+}
+
+.password-input {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align: left;
 }
 
 *,
