@@ -3,6 +3,7 @@ import userSessionsRouter from "./api/v1/userSessionsRouter.js";
 import usersRouter from "./api/v1/usersRouter.js";
 import clientRouter from "./clientRouter.js";
 import categoriesRouter from "./api/v1/categoriesRouter.js";
+
 const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
 
