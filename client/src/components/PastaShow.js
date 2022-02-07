@@ -2,33 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const PastaShow = (props) => {
-    const [pasta, setPasta] = useState({
-        name: '',
-        description: '',
-        category: {}
-    })
+  const [pasta, setPasta] = useState({
+    name: "",
+    description: "",
+    category: {},
+  });
 
-    const pastaId = props.match.params.id
+  const pastaId = props.match.params.id;
 
-    const getPasta = async () => {
-        
-        try {
-            const response = await fetch(`/api/v1/pastas/${pastaId}`)
-            if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw error
-            }
-            const body = await response.json()
-            setPasta(body.pasta)
-        } catch (error) {
-            console.error(`Error in fetch ${error.message}`)
-        }
+  const getPasta = async () => {
+    try {
+      const response = await fetch(`/api/v1/pastas/${pastaId}`);
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`;
+        const error = new Error(errorMessage);
+        throw error;
+      }
+      const body = await response.json();
+      setPasta(body.pasta);
+    } catch (error) {
+      console.error(`Error in fetch ${error.message}`);
     }
+  };
 
-    useEffect(() => {
+  useEffect(() => {
         getPasta()
     }, [])
+  
     return (
         <>
             <div className="pasta-info">
@@ -40,4 +40,4 @@ const PastaShow = (props) => {
     )
 }
 
-export default PastaShow
+export default PastaShow;
