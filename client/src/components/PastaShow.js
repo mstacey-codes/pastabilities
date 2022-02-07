@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const PastaShow = (props) => {
     const [pasta, setPasta] = useState({
@@ -33,7 +34,7 @@ const PastaShow = (props) => {
             <div className="pasta-info">
                 <h1 className='pasta-title'>{pasta.name}</h1>
                 <p className="pasta-desc">{pasta.description}</p>
-                <p className="pasta-category">Category: {pasta.category.name}</p>
+                <Link to={`/categories/${pasta.category.id}`}><p className="pasta-category">Category: {pasta.category.name}</p></Link>
             </div>
         </>
     )
