@@ -15,7 +15,7 @@ exports.up = async (knex) => {
             .references('pastas.id')
         table.string('title').notNullable()
         table.integer('rating').notNullable()
-        table.string('review')
+        table.string('body')
         table.string('recipe')
         table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now())
         table.timestamp('updatedAt').notNullable().defaultTo(knex.fn.now())

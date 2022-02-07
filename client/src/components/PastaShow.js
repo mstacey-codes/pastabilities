@@ -37,7 +37,7 @@ const PastaShow = (props) => {
 
     const postReview = async (newReviewData) => {
         try {
-            const response = await fetch (`/api/v1/pastas/${pastaId}/newReview`, {
+            const response = await fetch (`/api/v1/pastas/${pastaId}/review`, {
                 method: 'POST',
                 headers: new Headers({
                     'Content-Type': 'application/json'

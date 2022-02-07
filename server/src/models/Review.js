@@ -12,7 +12,7 @@ class Review extends Model {
             properties: {
                 title: { type: 'string' },
                 rating: { type: ['string','integer'], minimum: 1, maximum: 5 },
-                review: { type: 'string' },
+                body: { type: 'string' },
                 recipe: { type: 'string' }
             }
         }

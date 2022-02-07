@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ReviewTile = ({ title, rating, review, recipe }) => {
+const ReviewTile = ({ title, rating, body, recipe }) => {
 
   let reviewDescription
-  if (review) {
-    reviewDescription = <p>Review: {review}</p>
+  if (body) {
+    reviewDescription = <p>Review: {body}</p>
   }
   return (
     <div className='review-tile'>

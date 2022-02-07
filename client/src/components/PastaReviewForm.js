@@ -4,7 +4,7 @@ const PastaReviewForm = ({ postReview }) => {
     const [newReview, setNewReview] = useState({
         title: '',
         rating: '',
-        review: '',
+        body: '',
         recipe: ''
     })
 
@@ -25,7 +25,7 @@ const PastaReviewForm = ({ postReview }) => {
         setNewReview({
             title: '',
             rating: '',
-            review: '',
+            body: '',
             recipe: ''
         })
     }
@@ -45,15 +45,17 @@ const PastaReviewForm = ({ postReview }) => {
                         value={newReview.title}
                     />
                 </label>
+
                 <label>
                     Review:
                     <input
                         type='text'
-                        name='review'
+                        name='body'
                         onChange={handleInputChange}
-                        value={newReview.review}
+                        value={newReview.body}
                     />
                 </label>
+
                 <label>
                     Recipe (Optional):
                     <input
@@ -63,6 +65,7 @@ const PastaReviewForm = ({ postReview }) => {
                         value={newReview.recipe}
                     />
                 </label>
+
                 <label>
                     Rating (1 (Terrible) - 5 (Amazing)):
                     <input
