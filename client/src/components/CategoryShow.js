@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import PastaTile from "./PastaTile.js";
 import NewPastaForm from "./NewPastaForm.js";
 import ErrorList from "./ErrorList";
 import translateServerErrors from "../services/translateServerErrors";
-import getCurrentUser from "../services/getCurrentUser.js";
 
 const CategoryShow = (props) => {
   const [category, setCategory] = useState({
@@ -13,6 +13,7 @@ const CategoryShow = (props) => {
   const [errors, setErrors] = useState([]);
 
   const categoryId = props.match.params.id;
+  const user = props.user;
 
   const getCategory = async () => {
     try {
@@ -42,7 +43,6 @@ const CategoryShow = (props) => {
         }),
         body: JSON.stringify(newPastaData),
       });
-      console.log(response);
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -72,18 +72,16 @@ const CategoryShow = (props) => {
       return <PastaTile key={pastaObject.id} {...pastaObject} />;
     });
   }
-  const showForm = () => {
-    if (currentUser) {
-      return (
-        <>
-          <ErrorList errors={errors} />
-          <NewPastaForm postPasta={postPasta} />
-        </>
-      );
-    } else {
-      return <h3>You must be logged in to submit a pasta!</h3>;
-    }
-  };
+
+  let showForm = <h3>You must be logged in to submit a pasta!</h3>;
+  if (user) {
+    showForm = (
+      <>
+        <ErrorList errors={errors} />
+        <NewPastaForm postPasta={postPasta} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -93,9 +91,9 @@ const CategoryShow = (props) => {
       <div className="list-container">
         <div className="column-grid">{pastasList}</div>
       </div>
-      <div>{showForm()}</div>
+      <div>{showForm}</div>
     </>
   );
 };
 
-export default CategoryShow;
+export default withRouter(CategoryShow);
