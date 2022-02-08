@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import ErrorList from './ErrorList.js'
+import translateServerErrors from '../services/translateServerErrors'
+import PastaReviewForm from './PastaReviewForm'
+import ReviewTile from './ReviewTile'
 import { Link } from 'react-router-dom'
 
 const PastaShow = (props) => {
-  const [pasta, setPasta] = useState({
-    name: "",
-    description: "",
-    category: {},
-  });
+    const [pasta, setPasta] = useState({
+        name: '',
+        description: '',
+        category: {},
+        reviews: []
+    })
+    const [errors, setErrors] = useState([])
+
 
   const pastaId = props.match.params.id;
 
@@ -28,7 +35,51 @@ const PastaShow = (props) => {
   useEffect(() => {
         getPasta()
     }, [])
-  
+
+    const postReview = async (newReviewData) => {
+        try {
+            const response = await fetch (`/api/v1/pastas/${pastaId}/reviews`, {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify(newReviewData)
+            })
+            if (!response.ok) {
+                if(response.status === 422) {
+                    const body = await response.json()
+                    const newErrors = translateServerErrors(body.errors)
+                    return setErrors(newErrors)
+                } else {
+                    const errorMessage = `${response.status} (${response.statusText})`
+                    const error = new Error(errorMessage)
+                    throw(error)
+                }
+            } else {
+                const body = await response.json()
+                const updatedReviews = pasta.reviews.concat(body.reviews)
+                setErrors([])
+                setPasta({...pasta, reviews: updatedReviews})
+                } 
+        } catch(error) {
+            console.error(`Error in fetch: ${error.message}`)
+        }
+    }
+
+    let reviewTiles
+    if (!pasta.reviews[0]) {
+        reviewTiles = "There are currently no reviews for this pasta!"
+    } else {
+        reviewTiles = pasta.reviews.map((reviewObject) => {
+            return (
+                <ReviewTile
+                    key={reviewObject.id}
+                    {...reviewObject}
+                />
+            )
+            })
+        }
+
     return (
         <>
             <div className="pasta-info">
@@ -36,8 +87,17 @@ const PastaShow = (props) => {
                 <p className="pasta-desc">{pasta.description}</p>
                 <Link to={`/categories/${pasta.category.id}`}><p className="pasta-category">Category: {pasta.category.name}</p></Link>
             </div>
+            <div className="pasta-info">
+                <ErrorList errors={errors} />
+                <PastaReviewForm
+                    postReview={postReview}
+                />
+            </div>
+            <div className="pasta-info">
+                {reviewTiles}
+            </div>
         </>
     )
 }
 
-export default PastaShow;
+export default PastaShow
