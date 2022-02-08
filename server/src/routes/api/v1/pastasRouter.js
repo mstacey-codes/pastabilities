@@ -33,6 +33,6 @@ pastasRouter.get('/:id', async (req, res) => {
     }
 })
 
-pastasRouter.use('/:pastaId/review', pastaReviewsRouter)
+pastasRouter.use('/:pastaId/reviews', pastaReviewsRouter)
 
 export default pastasRouter

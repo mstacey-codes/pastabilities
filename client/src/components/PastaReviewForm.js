@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const PastaReviewForm = ({ postReview }) => {
+const PastaReviewForm = ({ postReview, canClear }) => {
     const [newReview, setNewReview] = useState({
         title: '',
         rating: '',
@@ -15,10 +15,12 @@ const PastaReviewForm = ({ postReview }) => {
         })
     }
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
         postReview(newReview)
-        clearForm()
+        const validPost = await postReview(newReview)
+        if (validPost) {
+        clearForm()}
     }
 
     const clearForm = () => {
@@ -29,8 +31,6 @@ const PastaReviewForm = ({ postReview }) => {
             recipe: ''
         })
     }
-
-
     
     return (
         <div className='review-form'>
