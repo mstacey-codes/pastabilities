@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import PastaTile from "./PastaTile.js";
+import { withRouter } from "react-router-dom";
 import NewPastaForm from "./NewPastaForm.js";
 import ErrorList from "./ErrorList";
 import translateServerErrors from "../services/translateServerErrors";
@@ -43,6 +44,7 @@ const CategoryShow = (props) => {
         }),
         body: JSON.stringify(newPastaData),
       });
+
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -58,7 +60,6 @@ const CategoryShow = (props) => {
         const updatedPastas = category.pastas.concat(body.pasta);
         setErrors([]);
         setCategory({ ...category, pastas: updatedPastas });
-        return true;
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);

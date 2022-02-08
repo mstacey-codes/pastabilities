@@ -2,5 +2,6 @@
 const User = require("./User.js");
 const Category = require("./Category.js");
 const Pasta = require("./Pasta.js");
+const Review = require("./Review.js")
 
-module.exports = { User, Category, Pasta };
+module.exports = { User, Category, Pasta, Review };

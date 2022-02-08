@@ -1,5 +1,6 @@
 import express from 'express'
 import PastasSerializer from '../../../serializers/PastasSerializer.js'
+import pastaReviewsRouter from './pastaReviewsRouter.js'
 
 import { Pasta } from '../../../models/index.js'
 
@@ -25,10 +26,13 @@ pastasRouter.get('/:id', async (req, res) => {
         const pasta = await Pasta.query().findById(pastaIndex)
         const serializedPasta = PastasSerializer.getDetails(pasta)
         serializedPasta.category = await pasta.$relatedQuery('category')
+        serializedPasta.reviews = await pasta.$relatedQuery('reviews')
         return res.status(200).json({ pasta: serializedPasta })
     } catch (error) {
         return res.status(500).json({ errors: error })
     }
 })
+
+pastasRouter.use('/:pastaId/reviews', pastaReviewsRouter)
 
 export default pastasRouter
