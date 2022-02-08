@@ -10,7 +10,6 @@ categoriesPastasRouter.post("/", async (req, res) => {
   const { body } = req;
   body.name = body.name.toLowerCase();
   const formInput = cleanUserInput(body);
-  console.log(formInput)
   const { name, description } = formInput;
   const { categoryId } = req.params;
 
@@ -21,7 +20,6 @@ categoriesPastasRouter.post("/", async (req, res) => {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }
-    console.log(error)
     return res.status(500).json({ errors: error });
   }
 });
