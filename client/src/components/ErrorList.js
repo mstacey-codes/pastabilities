@@ -9,7 +9,11 @@ const ErrorList = props => {
       index++
       return (
         <li key={index}>
+<<<<<<< HEAD
         {props.errors[field]}
+=======
+          {_.capitalize(field)} {props.errors[field]}
+>>>>>>> f4d661d844a644720761475d3b5266e5e1aa1f6a
         </li>
       )
     })
@@ -23,4 +27,8 @@ const ErrorList = props => {
   }
 }
 
+<<<<<<< HEAD
 export default ErrorList
+=======
+export default ErrorList
+>>>>>>> f4d661d844a644720761475d3b5266e5e1aa1f6a
