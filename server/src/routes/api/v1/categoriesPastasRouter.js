@@ -9,7 +9,6 @@ const categoriesPastasRouter = new express.Router({ mergeParams: true });
 categoriesPastasRouter.post("/", async (req, res) => {
   const { body } = req;
   body.name = body.name.toLowerCase();
-  // body.name = lowerCaseName
   const formInput = cleanUserInput(body);
   console.log(formInput)
   const { name, description } = formInput;
