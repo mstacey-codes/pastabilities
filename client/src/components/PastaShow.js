@@ -38,7 +38,7 @@ const PastaShow = (props) => {
 
     const postReview = async (newReviewData) => {
         try {
-            const response = await fetch (`/api/v1/pastas/${pastaId}/review`, {
+            const response = await fetch (`/api/v1/pastas/${pastaId}/reviews`, {
                 method: 'POST',
                 headers: new Headers({
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const PastaShow = (props) => {
                 const updatedReviews = pasta.reviews.concat(body.reviews)
                 setErrors([])
                 setPasta({...pasta, reviews: updatedReviews})
-                }
+                } 
         } catch(error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -68,7 +68,7 @@ const PastaShow = (props) => {
 
     let reviewTiles
     if (!pasta.reviews[0]) {
-        reviewTiles = `There are currently no reviews for this pasta!`
+        reviewTiles = "There are currently no reviews for this pasta!"
     } else {
         reviewTiles = pasta.reviews.map((reviewObject) => {
             return (
@@ -86,13 +86,15 @@ const PastaShow = (props) => {
                 <h1 className='pasta-title'>{pasta.name}</h1>
                 <p className="pasta-desc">{pasta.description}</p>
                 <Link to={`/categories/${pasta.category.id}`}><p className="pasta-category">Category: {pasta.category.name}</p></Link>
-                {reviewTiles}
             </div>
-            <div>
+            <div className="pasta-info">
                 <ErrorList errors={errors} />
                 <PastaReviewForm
                     postReview={postReview}
                 />
+            </div>
+            <div className="pasta-info">
+                {reviewTiles}
             </div>
         </>
     )
