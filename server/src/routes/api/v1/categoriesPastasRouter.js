@@ -8,8 +8,10 @@ const categoriesPastasRouter = new express.Router({ mergeParams: true });
 
 categoriesPastasRouter.post("/", async (req, res) => {
   const { body } = req;
-  newPasta.name.toLowerCase();
+  body.name = body.name.toLowerCase();
+  // body.name = lowerCaseName
   const formInput = cleanUserInput(body);
+  console.log(formInput)
   const { name, description } = formInput;
   const { categoryId } = req.params;
 
@@ -20,6 +22,7 @@ categoriesPastasRouter.post("/", async (req, res) => {
     if (error instanceof ValidationError) {
       return res.status(422).json({ errors: error.data });
     }
+    console.log(error)
     return res.status(500).json({ errors: error });
   }
 });

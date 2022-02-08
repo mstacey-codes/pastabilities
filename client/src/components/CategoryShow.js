@@ -58,6 +58,7 @@ const CategoryShow = (props) => {
         const updatedPastas = category.pastas.concat(body.pasta);
         setErrors([]);
         setCategory({ ...category, pastas: updatedPastas });
+        return true;
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -73,7 +74,7 @@ const CategoryShow = (props) => {
     });
   }
 
-  let showForm = <h3>You must be logged in to submit a pasta!</h3>;
+  let showForm = <h3>Please sign in or sign up at the top of the page to submit a pasta!</h3>;
   if (user) {
     showForm = (
       <>
@@ -91,7 +92,7 @@ const CategoryShow = (props) => {
       <div className="list-container">
         <div className="column-grid">{pastasList}</div>
       </div>
-      <div>{showForm}</div>
+      <div className="list-container">{showForm}</div>
     </>
   );
 };
