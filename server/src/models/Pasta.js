@@ -13,6 +13,7 @@ class Pasta extends unique(Model) {
 
   static get relationMappings() {
     const Category = require("./Category");
+    const Review = require('./Review.js')
 
     return {
       category: {
@@ -23,6 +24,14 @@ class Pasta extends unique(Model) {
           to: "categories.id",
         },
       },
+      reviews: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: 'pastas.id',
+          to: 'reviews.pastaId'
+        }
+      }
     };
   }
 
