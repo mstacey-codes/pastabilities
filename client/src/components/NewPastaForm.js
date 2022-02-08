@@ -13,10 +13,12 @@ const NewPastaForm = ({ postPasta }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    postPasta(newPasta);
-    clearForm();
+    const validPost = await postPasta(newPasta)
+      if (validPost) {
+        clearForm();
+      }
   };
 
   const clearForm = () => {

@@ -38,7 +38,7 @@ const App = (props) => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/categories" component={CategoriesList} />
         <Route exact path="/categories/:id">
-          <CategoryShow user={CategoryShow} />
+          <CategoryShow user={currentUser} />
         </Route>
 
         <Route exact path="/users/new" component={RegistrationForm} />

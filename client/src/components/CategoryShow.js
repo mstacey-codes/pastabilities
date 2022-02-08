@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import PastaTile from "./PastaTile.js";
 import { withRouter } from "react-router-dom";
 import NewPastaForm from "./NewPastaForm.js";
 import ErrorList from "./ErrorList";
 import translateServerErrors from "../services/translateServerErrors";
-import getCurrentUser from "../services/getCurrentUser.js";
 
 const CategoryShow = (props) => {
   const [category, setCategory] = useState({
@@ -14,6 +14,7 @@ const CategoryShow = (props) => {
   const [errors, setErrors] = useState([]);
 
   const categoryId = props.match.params.id;
+  const user = props.user;
 
   const getCategory = async () => {
     try {
@@ -43,7 +44,7 @@ const CategoryShow = (props) => {
         }),
         body: JSON.stringify(newPastaData),
       });
-      console.log(response);
+
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -92,7 +93,7 @@ const CategoryShow = (props) => {
       <div className="list-container">
         <div className="column-grid">{pastasList}</div>
       </div>
-      <div>{showForm}</div>
+      <div className="list-container">{showForm}</div>
     </>
   );
 };
