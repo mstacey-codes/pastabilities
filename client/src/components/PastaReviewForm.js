@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 
-const PastaReviewForm = ({ postReview, canClear }) => {
+const PastaReviewForm = ({ postReview, user }) => {
     const [newReview, setNewReview] = useState({
         title: '',
         rating: '',
         body: '',
-        recipe: ''
+        recipe: '',
+        userId: null
     })
+
+    if (newReview.userId === null){
+        if (user) {
+        setNewReview({... newReview,
+        userId: user.id})
+        }
+    }
 
     const handleInputChange = event => {
         setNewReview({
@@ -17,7 +25,7 @@ const PastaReviewForm = ({ postReview, canClear }) => {
     
     const handleSubmit = async (event) => {
         event.preventDefault()
-        postReview(newReview)
+        // newReview.userId = user.id
         const validPost = await postReview(newReview)
         if (validPost) {
         clearForm()}
