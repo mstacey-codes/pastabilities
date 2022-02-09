@@ -12,8 +12,9 @@ class Pasta extends unique(Model) {
   }
 
   static get relationMappings() {
-    const Category = require("./Category");
-    const Review = require('./Review.js')
+    const Category = require("./Category.js");
+    const Review = require("./Review.js")
+    const User = require("./User.js")
 
     return {
       category: {
@@ -28,8 +29,20 @@ class Pasta extends unique(Model) {
         relation: Model.HasManyRelation,
         modelClass: Review,
         join: {
-          from: 'pastas.id',
-          to: 'reviews.pastaId'
+          from: "pastas.id",
+          to: "reviews.pastaId"
+        }
+      },
+      users: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: "pastas.id",
+          through: {
+            from: "reviews.pastaId",
+            to: "reviews.userId"
+          },
+          to: "users.id"
         }
       }
     };

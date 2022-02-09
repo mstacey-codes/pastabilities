@@ -3,7 +3,7 @@ import ErrorList from './ErrorList.js'
 import translateServerErrors from '../services/translateServerErrors'
 import PastaReviewForm from './PastaReviewForm'
 import ReviewTile from './ReviewTile'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 const PastaShow = (props) => {
     const [pasta, setPasta] = useState({
@@ -16,6 +16,7 @@ const PastaShow = (props) => {
 
 
   const pastaId = props.match.params.id;
+  const user = props.user;
 
   const getPasta = async () => {
     try {
@@ -65,6 +66,32 @@ const PastaShow = (props) => {
             console.error(`Error in fetch: ${error.message}`)
         }
     }
+    console.log(user)
+    
+    const listOfReviewers = pasta.reviews.map((review) => {
+        return review.userId
+    })
+
+    if (pasta.reviews.length !== 0) {
+        listOfReviewers
+    }
+
+    let showForm
+    if (user && !listOfReviewers.includes(user.id)) {
+        showForm = (
+        <>
+           <ErrorList errors={errors} />
+           <PastaReviewForm
+               postReview={postReview}
+               user={user}
+            />
+        </>
+        )
+        }   else if (user && listOfReviewers.includes(user.id)) {
+                showForm = <h3>You already reviewed this pasta!</h3>
+        }   else {
+                showForm = <h3>Please sign in or sign up at the top of the page to submit a review!</h3>
+        }
 
     let reviewTiles
     if (!pasta.reviews[0]) {
@@ -79,7 +106,7 @@ const PastaShow = (props) => {
             )
             })
         }
-
+        
     return (
         <>
             <div className="pasta-info">
@@ -88,10 +115,7 @@ const PastaShow = (props) => {
                 <Link to={`/categories/${pasta.category.id}`}><p className="pasta-category">Category: {pasta.category.name}</p></Link>
             </div>
             <div className="pasta-info">
-                <ErrorList errors={errors} />
-                <PastaReviewForm
-                    postReview={postReview}
-                />
+                {showForm}
             </div>
             <div className="pasta-info">
                 {reviewTiles}
@@ -100,4 +124,4 @@ const PastaShow = (props) => {
     )
 }
 
-export default PastaShow
+export default withRouter(PastaShow)
