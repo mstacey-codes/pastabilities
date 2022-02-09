@@ -30,8 +30,8 @@ const SignInForm = () => {
   };
 
   const onSubmit = async (event) => {
-    event.preventDefault()
-    validateInput(userPayload)
+    event.preventDefault();
+    validateInput(userPayload);
     try {
       if (Object.keys(errors).length === 0) {
         const response = await fetch("/api/v1/user-sessions", {
@@ -39,20 +39,20 @@ const SignInForm = () => {
           body: JSON.stringify(userPayload),
           headers: new Headers({
             "Content-Type": "application/json",
-          })
-        })
-        if(!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
+          }),
+        });
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
         }
-        const userData = await response.json()
-        setShouldRedirect(true)
+        const userData = await response.json();
+        setShouldRedirect(true);
       }
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`)
+    } catch (err) {
+      console.error(`Error in fetch: ${err.message}`);
     }
-  }
+  };
 
   const onInputChange = (event) => {
     setUserPayload({
@@ -67,31 +67,33 @@ const SignInForm = () => {
 
   return (
     <div className="grid-container" onSubmit={onSubmit}>
-      <h1>Sign In</h1>
-      <form>
-        <div>
-          <label>
-            Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={userPayload.password}
-              onChange={onInputChange}
-            />
-            <FormError error={errors.password} />
-          </label>
-        </div>
-        <div>
-          <input type="submit" className="button" value="Sign In" />
-        </div>
-      </form>
+      <div className="sign-in-form">
+        <h1>Sign In</h1>
+        <form>
+          <div className="email-input">
+            <label>
+              Email
+              <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+              <FormError error={errors.email} />
+            </label>
+          </div>
+          <div className="password-input">
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                value={userPayload.password}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.password} />
+            </label>
+          </div>
+          <div>
+            <input type="submit" className="button" value="Sign In" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import express from "express";
 import CategoriesSerializer from "../../../serializers/CategoriesSerializer.js";
-
+import categoriesPastasRouter from "./categoriesPastasRouter.js";
 import { Category } from "../../../models/index.js";
 
 const categoriesRouter = new express.Router();
@@ -29,5 +29,7 @@ categoriesRouter.get("/:id", async (req, res) => {
     return res.status(500).json({ errors: error });
   }
 });
+
+categoriesRouter.use("/:categoryId/pastas", categoriesPastasRouter)
 
 export default categoriesRouter;
