@@ -65,7 +65,6 @@ const PastaShow = (props) => {
       console.error(`Error in fetch: ${error.message}`);
     }
   };
-  console.log(user);
 
   const listOfReviewers = pasta.reviews.map((review) => {
     return review.userId;
