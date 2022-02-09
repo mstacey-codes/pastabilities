@@ -8,7 +8,7 @@ const HomePage = (props) => {
         <h1>Welcome to Pastabilities! </h1>
       </div>
       <div className="tag-line homepage">
-        <h3 >Where we let you review all pastas- from angel-hair to ziti!</h3>
+        <h3>Where we let you review all pastas- from angel-hair to ziti!</h3>
       </div>
       <CategoriesList />
     </>
