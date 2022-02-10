@@ -59,6 +59,7 @@ const CategoryShow = (props) => {
         const updatedPastas = category.pastas.concat(body.pasta);
         setErrors([]);
         setCategory({ ...category, pastas: updatedPastas });
+        return true;
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);

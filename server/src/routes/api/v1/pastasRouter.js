@@ -11,7 +11,7 @@ pastasRouter.get("/", async (req, res) => {
     const pastas = await Pasta.query();
     const serializedPastas = await Promise.all(
       pastas.map(async (pasta) => {
-        return PastasSerializer.getDetails(pasta);
+        return PastasSerializer.getSummary(pasta);
       })
     );
     return res.status(200).json({ pastas: serializedPastas });
@@ -27,6 +27,7 @@ pastasRouter.get("/:id", async (req, res) => {
     const serializedPasta = await PastasSerializer.getDetails(pasta);
     return res.status(200).json({ pasta: serializedPasta });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ errors: error });
   }
 });

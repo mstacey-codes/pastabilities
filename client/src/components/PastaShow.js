@@ -62,7 +62,6 @@ const PastaShow = (props) => {
         const updatedReviews = pasta.reviews.concat(body.reviews);
         setErrors([]);
         setPasta({ ...pasta, reviews: updatedReviews });
-        return true;
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);

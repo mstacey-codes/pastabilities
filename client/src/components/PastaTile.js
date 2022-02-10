@@ -6,7 +6,7 @@ const PastaTile = (pasta) => {
   let numberOfReviews;
   if (pasta.averageRating) {
     averageRating = <p>{pasta.averageRating} ⭐</p>;
-    numberOfReviews = <p>{pasta.reviews.length} Reviews</p>;
+    numberOfReviews = <p>{pasta.numberOfReviews} Reviews</p>;
   }
   return (
     <div className="pasta-tile">
