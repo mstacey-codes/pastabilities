@@ -9,11 +9,11 @@ const pastaReviewsRouter = new express.Router({ mergeParams: true })
 
 pastaReviewsRouter.post('/', async (req, res) => {
     const formInput = cleanUserInput(req.body)
-    const { title, rating, body, recipe } = formInput
+    const { title, rating, body, recipe, userId } = formInput
     const { pastaId } = req.params
 
     try {
-        const newReview = await Review.query().insertAndFetch({ title, rating, body, recipe, pastaId })
+        const newReview = await Review.query().insertAndFetch({ title, rating, body, recipe, pastaId, userId })
         return res.status(201).json({ reviews: newReview })
     } catch (error) {
         if (error instanceof ValidationError) {

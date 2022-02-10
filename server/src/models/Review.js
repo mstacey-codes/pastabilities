@@ -19,6 +19,7 @@ class Review extends Model {
     }
     static relationMappings() {
         const Pasta = require('./Pasta.js')
+        const User = require('./User.js')
 
         return {
             pasta: {
@@ -27,6 +28,14 @@ class Review extends Model {
                 join: {
                     from: 'reviews.pastaId',
                     to: 'pastas.id'
+                }
+            },
+            user: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: User,
+                join: {
+                    from: 'reviews.userId',
+                    to: 'users.id'
                 }
             }
         }

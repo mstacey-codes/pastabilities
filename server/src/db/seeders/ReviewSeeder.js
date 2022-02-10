@@ -1,22 +1,21 @@
-import { Pasta, Review } from "../../models/index.js";
+import { Pasta, Review, User } from "../../models/index.js";
 
 class ReviewSeeder {
   static async seed() {
-
-    spaghettiQuery = (await Pasta.query().findOne({ name: "spaghetti" })).id
-    
     const reviewData = [
       {
         title: "spaghetti is gooood!",
-        body: "It goes so well with chicken parm",
+        body: "When I'm feeling down, all I really want is a big bowl of spaghetti noodles...",
         rating: "5",
-        pastaId: {spaghettiQuery}
+        pastaId: (await Pasta.query().findOne({ name: "spaghetti" })).id,
+        userId: (await User.query().findOne({ email: "mstacey@gmail.com" })).id,
       },
       {
         title: "spaghetti with meatballs",
         body: "Sweedish meatballs with spaghet!",
         rating: "4",
-        pastaId: {spaghettiQuery}
+        pastaId: (await Pasta.query().findOne({ name: "spaghetti" })).id,
+        userId: (await User.query().findOne({ email: "ethanAK@gmail.com" })).id,
       },
     ];
     for (const singleReviewData of reviewData) {
