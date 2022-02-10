@@ -5,7 +5,7 @@ const ReviewTile = ({ title, rating, body, recipe, user, id, voteCount, reviewer
 
   let reviewDescription
   if (body) {
-    reviewDescription = <p>Review: {body}</p>
+    reviewDescription = <p>Review: {body}</p>;
   }
 
   const [totalVotes, setTotalVotes] = useState(voteCount)
@@ -89,17 +89,19 @@ const ReviewTile = ({ title, rating, body, recipe, user, id, voteCount, reviewer
     }
 
   return (
-    <div className='review-tile'>
+    <div className="review-tile">
       <h5>{title}</h5>
       <p>Rating: {rating}</p>
       {signInMessage}
       {reviewDescription}
-      <p>{recipe}</p>
+      <a href={recipe} target="_blank">
+        {recipe}
+      </a>
       {votedMessage}
       {buttons}
       Vote Count: {totalVotes}
     </div>
-  )
-}
+  );
+};
 
 export default withRouter(ReviewTile)
