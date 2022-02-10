@@ -11,7 +11,9 @@ const PastaShow = (props) => {
     description: "",
     category: {},
     reviews: [],
+    averageRating: null,
   });
+
   const [errors, setErrors] = useState([]);
 
   const pastaId = props.match.params.id;
@@ -60,6 +62,7 @@ const PastaShow = (props) => {
         const updatedReviews = pasta.reviews.concat(body.reviews);
         setErrors([]);
         setPasta({ ...pasta, reviews: updatedReviews });
+        return true;
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -106,6 +109,7 @@ const PastaShow = (props) => {
       <div className="pasta-info">
         <h1 className="pasta-title">{pasta.name}</h1>
         <p className="pasta-desc">{pasta.description}</p>
+        <p> Average Rating: {pasta.averageRating} </p>
         <Link to={`/categories/${pasta.category.id}`}>
           <p className="pasta-category">Category: {pasta.category.name}</p>
         </Link>

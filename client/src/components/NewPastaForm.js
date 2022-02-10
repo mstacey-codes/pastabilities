@@ -13,19 +13,19 @@ const NewPastaForm = ({ postPasta }) => {
     });
   };
 
+  const clearForm = () => {
+    setNewPasta({
+      name: "",
+      description: "",
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validPost = await postPasta(newPasta);
     if (validPost) {
       clearForm();
     }
-  };
-
-  const clearForm = () => {
-    setNewPasta({
-      name: "",
-      description: "",
-    });
   };
 
   return (
