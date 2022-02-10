@@ -4,10 +4,12 @@ import usersRouter from "./api/v1/usersRouter.js";
 import clientRouter from "./clientRouter.js";
 import categoriesRouter from "./api/v1/categoriesRouter.js";
 import pastasRouter from "./api/v1/pastasRouter.js";
+import votesRouter from "./api/v1/votesRouter.js"
 
 const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
 
+rootRouter.use("/api/v1/votes", votesRouter)
 rootRouter.use("/api/v1/pastas", pastasRouter);
 rootRouter.use("/api/v1/categories", categoriesRouter);
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);

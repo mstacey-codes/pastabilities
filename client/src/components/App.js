@@ -46,7 +46,9 @@ const App = (props) => {
         <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
 
         <Route exact path="/pastas" component={PastasList} />
-        <Route exact path="/pastas/:id" component={PastaShow} />
+        <Route exact path="/pastas/:id">
+          <PastaShow user={currentUser} />
+        </Route>
       </Switch>
     </Router>
   );

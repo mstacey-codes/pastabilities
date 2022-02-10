@@ -24,6 +24,7 @@ class Pasta extends unique(Model) {
           to: "categories.id",
         },
       },
+      
       reviews: {
         relation: Model.HasManyRelation,
         modelClass: Review,

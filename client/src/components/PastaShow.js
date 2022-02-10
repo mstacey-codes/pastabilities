@@ -4,6 +4,7 @@ import translateServerErrors from '../services/translateServerErrors'
 import PastaReviewForm from './PastaReviewForm'
 import ReviewTile from './ReviewTile'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 const PastaShow = (props) => {
     const [pasta, setPasta] = useState({
@@ -14,25 +15,25 @@ const PastaShow = (props) => {
     })
     const [errors, setErrors] = useState([])
 
+    const user = props.user
+    const pastaId = props.match.params.id;
 
-  const pastaId = props.match.params.id;
+    const getPasta = async () => {
+        try {
+            const response = await fetch(`/api/v1/pastas/${pastaId}`);
+            if (!response.ok) {
+            const errorMessage = `${response.status} (${response.statusText})`;
+            const error = new Error(errorMessage);
+            throw error;
+            }
+            const body = await response.json();
+            setPasta(body.pasta);
+        } catch (error) {
+            console.error(`Error in fetch ${error.message}`);
+        }
+    };
 
-  const getPasta = async () => {
-    try {
-      const response = await fetch(`/api/v1/pastas/${pastaId}`);
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
-      }
-      const body = await response.json();
-      setPasta(body.pasta);
-    } catch (error) {
-      console.error(`Error in fetch ${error.message}`);
-    }
-  };
-
-  useEffect(() => {
+    useEffect(() => {
         getPasta()
     }, [])
 
@@ -74,6 +75,7 @@ const PastaShow = (props) => {
             return (
                 <ReviewTile
                     key={reviewObject.id}
+                    user={user}
                     {...reviewObject}
                 />
             )
@@ -100,4 +102,4 @@ const PastaShow = (props) => {
     )
 }
 
-export default PastaShow
+export default withRouter(PastaShow)

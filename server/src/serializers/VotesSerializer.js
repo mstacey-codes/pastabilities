@@ -1,34 +1,29 @@
-import Review from "../src/models/Review.js"
+// import Review from "../models/Review.js"
+import { Vote } from "../models/index.js"
 
-class VoteSerializer {
-  static async getTotal(reviewId) {
-    const review = await Review.query().findById(reviewId)
-    const relatedVotes = await review.$relatedQuery("votes")
-
-    let totalCount = {
-      upVote: 0,
-      downVote: 0
+class VotesSerializer {
+  static getSummary(vote) {
+    const allowedAttributes = ['id', 'value']
+    let serializedVote = {}
+    for (const attribute of allowedAttributes) {
+      serializedVote[attribute] = vote[attribute]
     }
-
-    relatedVotes.forEach(relatedVote => {
-      if (relatedVote.value === 1) {
-        totalCount.vote++
-      } else if (relatedVote.value === -1) {
-        totalCount.vote--
-      }
-    })
-
-    return totalCount
+    return serializedVote
   }
 
-  static async checkForLastVote(reviewId, userId) {
-    const review = await Review.query().findById(reviewId)
-    const lastVote = await review.$relatedQuery("votes").findOne({ userId: userId })
-    if (!lastVote) {
-      return false
+  static async getVoteCount(reviewId) {
+    const voteSum = await Vote.query().where({reviewId: reviewId}).sum("value")
+    let trueSum = voteSum[0].sum
+    if (!trueSum) {
+      trueSum = 0
     }
-    return true
+    return trueSum
+  }
+
+  static async getReviewers(reviewId) {
+    const reviewVoters = await Vote.query().where({reviewId: reviewId})
+    return reviewVoters
   }
 }
 
-export default VoteSerializer 
+export default VotesSerializer 
