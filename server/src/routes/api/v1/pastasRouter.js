@@ -11,7 +11,7 @@ pastasRouter.get('/', async (req, res) => {
         const pastas = await Pasta.query()
         const serializedPastas = await Promise.all(
             pastas.map(async (pasta) => {
-                return PastasSerializer.getDetails(pasta)
+                return PastasSerializer.getSummary(pasta)
             })
         )
         return res.status(200).json({ pastas: serializedPastas })
@@ -24,11 +24,11 @@ pastasRouter.get('/:id', async (req, res) => {
     const pastaIndex = req.params.id
     try {
         const pasta = await Pasta.query().findById(pastaIndex)
-        const serializedPasta = PastasSerializer.getDetails(pasta)
+        const serializedPasta = await PastasSerializer.getDetails(pasta)
         serializedPasta.category = await pasta.$relatedQuery('category')
-        serializedPasta.reviews = await pasta.$relatedQuery('reviews')
         return res.status(200).json({ pasta: serializedPasta })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })

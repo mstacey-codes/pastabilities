@@ -2,6 +2,7 @@ import { Pasta, Review, User } from "../../models/index.js";
 
 class ReviewSeeder {
   static async seed() {
+
     const reviewData = [
       {
         title: "Nothing Like It!",
