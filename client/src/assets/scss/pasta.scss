@@ -10,6 +10,7 @@
   margin-right: auto;
   border-style: solid;
   border-color: #fcd32c;
+  filter: drop-shadow(5px 5px 4px #00000099);
 }
 
 .pasta-info {
@@ -38,9 +39,15 @@
   font-size: 16pt;
   padding-top: 3%;
   padding-left: 3%;
+  padding-left: 3%;
 }
 
 .pasta-category {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   padding-left: 3%;
+}
+
+.average-rating {
+  font-size: 16 pt;
+  text-align: center;
 }

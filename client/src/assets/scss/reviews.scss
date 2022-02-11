@@ -1,37 +1,4 @@
-.no-form {
-  text-align: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-.review-form {
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.review-form-title {
-  text-align: center;
-}
-
-.form-fields {
-  margin-left: 1%;
-  margin-right: 1%;
-}
-
-.number-field {
-  max-width: 50px;
-}
-
-.review-form {
-  border-style: solid;
-  border-radius: 10px;
-  background-color: #ffffff;
-  padding-bottom: 1%;
-  margin-top: 2%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.review-tiles {
+.review-collection-box {
   border-style: solid;
   border-radius: 10px;
   background-color: #ffffff99;
@@ -39,6 +6,7 @@
   margin-top: 2%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 5%;
 }
 .review-tile {
   background-color: #ffffff;
@@ -47,4 +15,14 @@
   border-color: #c92c20;
   padding: 1%;
   margin: 1%;
+}
+
+.no-reviews {
+  background-color: #ffffff;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #c92c20;
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
 }
