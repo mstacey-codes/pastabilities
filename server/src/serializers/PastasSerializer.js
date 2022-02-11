@@ -28,9 +28,7 @@ class PastasSerializer {
   static async getDetails(pasta) {
     const serializedPasta = this.getSummary(pasta);
     const relatedReviews = await pasta.$relatedQuery("reviews");
-    const serializedReviews = await Promise.all(
-      relatedReviews.map(async (review) => await ReviewsSerializer.getDetails(review))
-    );
+    const serializedReviews = await ReviewsSerializer.getSummary(relatedReviews);
     console.log(serializedReviews);
     serializedPasta.reviews = serializedReviews;
     return serializedPasta;
