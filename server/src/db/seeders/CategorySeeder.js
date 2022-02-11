@@ -6,8 +6,7 @@ class CategorySeeder {
       { name: "Short" },
       { name: "Long" },
       { name: "Soup" },
-      { name: "Stretched" },
-      { name: "Filled" },
+      { name: "Fillable" },
       { name: "Fun" },
       { name: "Other" },
     ];
