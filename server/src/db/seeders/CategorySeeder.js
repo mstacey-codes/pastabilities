@@ -6,13 +6,14 @@ class CategorySeeder {
       { name: "Short" },
       { name: "Long" },
       { name: "Soup" },
-      { name: "Stretched" },
-      { name: "Filled" },
+      { name: "Fillable" },
       { name: "Fun" },
       { name: "Other" },
     ];
     for (const singleCategoryData of categoriesData) {
-      const currentCategory = await Category.query().findOne({ name: singleCategoryData.name });
+      const currentCategory = await Category.query().findOne({
+        name: singleCategoryData.name,
+      });
       if (!currentCategory) {
         await Category.query().insert(singleCategoryData);
       }
