@@ -29,24 +29,26 @@ const NewPastaForm = ({ postPasta }) => {
   };
 
   return (
-    <div>
-      <h1>Add a new pasta:</h1>
+    <div className="form">
+      <h3 className="form-title">Add a new pasta to this category:</h3>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name="name" onChange={handleInputChange} value={newPasta.name} />
-        </label>
-        <label>
-          Description:
-          <input
-            type="text"
-            name="description"
-            onChange={handleInputChange}
-            value={newPasta.description}
-          />
-        </label>
-        <div className="button">
-          <input className="button" type="submit" value="Submit" />
+        <div className="form-fields">
+          <label>
+            Name:
+            <input type="text" name="name" onChange={handleInputChange} value={newPasta.name} />
+          </label>
+          <label>
+            Description:
+            <input
+              type="text"
+              name="description"
+              onChange={handleInputChange}
+              value={newPasta.description}
+            />
+          </label>
+          <div className="button">
+            <input className="button" type="submit" value="Submit" />
+          </div>
         </div>
       </form>
     </div>

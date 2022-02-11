@@ -6,6 +6,7 @@
 @import "./loggingin.scss";
 @import "./homepage.scss";
 @import "./reviews.scss";
+@import "./forms.scss";
 
 body {
   background-image: url("https://e7.pngegg.com/pngimages/243/115/png-clipart-check-textile-woven-fabric-tartan-gingham-checkered-border-s-angle-rectangle.png");
@@ -18,6 +19,10 @@ h1 {
 
 h3 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.yellow-link {
+  color: #fcd32c;
 }
 
 a:link,

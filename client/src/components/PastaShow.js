@@ -17,6 +17,18 @@ const PastaShow = (props) => {
   const pastaId = props.match.params.id;
   const user = props.user;
 
+  let averageRating = "Add a review to see the average score";
+  if (pasta.reviews.length !== 0) {
+    const allRatings = pasta.reviews.map((review) => {
+      return review.rating;
+    });
+    const totalRatings = allRatings.reduce((accumulator, current) => {
+      return (accumulator += current);
+    }, 0);
+    const pastaAverage = (totalRatings / allRatings.length).toFixed(2);
+    averageRating = <>Average Rating: {pastaAverage}/5 ⭐</>;
+  }
+
   const getPasta = async () => {
     try {
       const response = await fetch(`/api/v1/pastas/${pastaId}`);
@@ -83,10 +95,10 @@ const PastaShow = (props) => {
       </>
     );
   } else if (user && listOfReviewers.includes(user.id)) {
-    showForm = <h3 className="no-form">You already reviewed this pasta!</h3>;
+    showForm = <h3 className="secondary-call">You already reviewed this pasta!</h3>;
   } else {
     showForm = (
-      <h3 className="no-form">
+      <h3 className="secondary-call">
         Please sign in or sign up at the top of the page to submit a review!
       </h3>
     );
@@ -94,7 +106,7 @@ const PastaShow = (props) => {
 
   let reviewTiles;
   if (!pasta.reviews[0]) {
-    reviewTiles = "There are currently no reviews for this pasta!";
+    reviewTiles = <div className="no-reviews">There are currently no reviews for this pasta!</div>;
   } else {
     reviewTiles = pasta.reviews.map((reviewObject) => {
       return <ReviewTile key={reviewObject.id} {...reviewObject} />;
@@ -104,14 +116,15 @@ const PastaShow = (props) => {
   return (
     <>
       <div className="pasta-info">
-        <h1 className="pasta-title">{pasta.name}</h1>
+        <h1 className="pasta-title">{pasta.name.toUpperCase()}</h1>
+        <div className="average-rating">{averageRating}</div>
         <p className="pasta-desc">{pasta.description}</p>
         <Link to={`/categories/${pasta.category.id}`}>
           <p className="pasta-category">Category: {pasta.category.name}</p>
         </Link>
       </div>
       <div className="review-form">{showForm}</div>
-      <div className="review-tiles">{reviewTiles}</div>
+      <div className="review-collection-box">{reviewTiles}</div>
     </>
   );
 };

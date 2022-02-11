@@ -40,8 +40,8 @@ const PastaReviewForm = ({ postReview, user }) => {
   };
 
   return (
-    <div className="review-form">
-      <h3 className="review-form-title">Add A New Review!</h3>
+    <div className="form">
+      <h3 className="form-title">Add A New Review!</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-fields">
           <label>

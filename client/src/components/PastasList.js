@@ -39,6 +39,12 @@ const PastasList = (props) => {
       <div className="list-container">
         <div className="column-grid">{pastaListItems}</div>
       </div>
+      <div className="secondary-call">
+        <h3>
+          Want to add a pasta? Go to the <Link to="/categories">category page</Link> that best fits
+          that pasta!
+        </h3>
+      </div>
     </>
   );
 };
