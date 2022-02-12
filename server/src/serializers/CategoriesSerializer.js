@@ -15,7 +15,7 @@ class CategoriesSerializer {
     const relatedPastas = await category.$relatedQuery("pastas");
 
     const serializedPastas = await Promise.all(
-      relatedPastas.map(async (pasta) => PastasSerializer.getDetails(pasta))
+      relatedPastas.map(async (pasta) => PastasSerializer.getSummary(pasta))
     );
     serializedCategory.pastas = serializedPastas;
 

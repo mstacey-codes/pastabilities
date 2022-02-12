@@ -11,7 +11,9 @@ const PastaShow = (props) => {
     description: "",
     category: {},
     reviews: [],
+    averageRating: null,
   });
+
   const [errors, setErrors] = useState([]);
 
   const pastaId = props.match.params.id;
@@ -119,6 +121,7 @@ const PastaShow = (props) => {
         <h1 className="pasta-title">{pasta.name.toUpperCase()}</h1>
         <div className="average-rating">{averageRating}</div>
         <p className="pasta-desc">{pasta.description}</p>
+        <p> Average Rating: {pasta.averageRating} </p>
         <Link to={`/categories/${pasta.category.id}`}>
           <p className="pasta-category">Category: {pasta.category.name}</p>
         </Link>

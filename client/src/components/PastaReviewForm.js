@@ -24,10 +24,11 @@ const PastaReviewForm = ({ postReview, user }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const validPost = await postReview(newReview);
-    if (validPost) {
-      clearForm();
-    }
+    postReview(newReview);
+    // const validPost = await postReview(newReview);
+    // if (validPost) {
+    //   clearForm();
+    // }
   };
 
   const clearForm = () => {

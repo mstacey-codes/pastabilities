@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PastaTile from "./PastaTile";
 import { Link } from "react-router-dom";
 
 const PastasList = (props) => {
@@ -23,12 +24,8 @@ const PastasList = (props) => {
     getPastas();
   }, []);
 
-  const pastaListItems = pastas.map((pasta) => {
-    return (
-      <div className="pasta-tile" key={pasta.id}>
-        <Link to={`/pastas/${pasta.id}`}>{pasta.name}</Link>
-      </div>
-    );
+  const pastasList = pastas.map((pastaObject) => {
+    return <PastaTile key={pastaObject.id} {...pastaObject} />;
   });
 
   return (
@@ -37,7 +34,7 @@ const PastasList = (props) => {
         <h3>Click on a Pasta to learn more!</h3>
       </div>
       <div className="list-container">
-        <div className="column-grid">{pastaListItems}</div>
+        <div className="column-grid"> {pastasList}</div>
       </div>
       <div className="secondary-call">
         <h3>
